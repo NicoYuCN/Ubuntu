@@ -1,0 +1,32 @@
+% FreeSurfer based format transformation of medical image data
+2019/04/22
+  [1] mount the shared folder on Win10 under the VMware Player 15 and Ubuntu 18
+    (a) VMware settings to STEP 12
+		https://theholmesoffice.com/how-to-share-folders-between-windows-and-ubuntu-using-vmware-player/
+	(b) Ubuntu 18
+		https://askubuntu.com/questions/29284/how-do-i-mount-shared-folders-in-ubuntu-using-vmware-tools
+		eg. The shared folder on Win10 is named "AAVMWshare"
+		  --> Command: sudo vmhgfs-fuse ./host:/AAVMWshare /mnt/hgfs -o allow_other -o uid=1000
+		  If you find no "hgfs" existing, the command above becomes
+		  --> Command: sudo vmhgfs-fuse ./host:/AAVMWshare /mnt/ -o allow_other -o uid=1000
+	(c) The content under the folder "AAVMWshare" is visible under the folder "/mnt".
+		NOTE: It is now all work are under the Ubuntu "/mnt", not the Win10. Please remember.
+			  --------------------------------------------------------------------------------
+  
+  [2] install FreeSurfer under Ubuntu 18
+	(a) download FreeSurfer under Win10
+		https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
+	(b) move the package into the AAVMWshare
+	(c) install under Ubuntu 18
+		(1) tar -C /usr/local -xzvf freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
+		(2) export FREESURFER_HOME=/usr/local/freesurfer/
+		(3) source $FREESURFER_HOME/SetUpFreeSurfer.sh
+	(d) localize the subject data
+		(1) export SUBJECTS_DIR=./host:/AAVMWshare/data
+	(e) obtain a license key of FreeSurfer
+		https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
+		(1) copy the license to the /usr/local/freesurfer/
+		sudo cp -i /mnt/license.txt /usr/local/freesurfer/	
+	(f) try FreeSurfer
+		(a) cp $FREESURFER_HOME/subjects/sample-001.mgz /mnt/data
+			mri_convert sample-001.mgz sample-001.nii.gz
