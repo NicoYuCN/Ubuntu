@@ -6,9 +6,9 @@
 	(b) Ubuntu 18
 		https://askubuntu.com/questions/29284/how-do-i-mount-shared-folders-in-ubuntu-using-vmware-tools
 		eg. The shared folder on Win10 is named "AAVMWshare"
-		  --> Command: sudo vmhgfs-fuse ./host:/AAVMWshare /mnt/hgfs -o allow_other -o uid=1000
+		  --> Command: sudo vmhgfs-fuse .host:/AAVMWshare /mnt/hgfs -o allow_other -o uid=1000
 		  If you find no "hgfs" existing, the command above becomes
-		  --> Command: sudo vmhgfs-fuse ./host:/AAVMWshare /mnt/ -o allow_other -o uid=1000
+		  --> Command: sudo vmhgfs-fuse .host:/AAVMWshare /mnt/ -o allow_other -o uid=1000
 	(c) The content under the folder "AAVMWshare" is visible under the folder "/mnt".
 		NOTE: It is now all work are under the Ubuntu "/mnt", not the Win10. Please remember.
 			  --------------------------------------------------------------------------------
