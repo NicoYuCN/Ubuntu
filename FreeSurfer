@@ -30,6 +30,24 @@
 	(f) try FreeSurfer
 		(a) cp $FREESURFER_HOME/subjects/sample-001.mgz /mnt/data
 			mri_convert sample-001.mgz sample-001.nii.gz
+			
+		(b) transform a sery of dicom images into a nii.gz
+			NOTE: mri_convert <one .dcm file in the Ax_PD series) Ax_PD.nii.gz
+			eg. mri_convert 40010119/IMG0000000000.dcm  40010119.nii.gz
+		(c) image cropping
+			eg. mri_convert --cropsize 256 256 256 40010119.nii.gz 40010119ISO.nii.gz
+		(d) image information
+			eg. mri_info SampleData.nii.gz
+				--> dimensions, voxel sizes, x/y/zstart and x/y/zend, 
+					ras xform (center position), orientation, 
+					voxel-to-ras transform and its determinant, 
+					ras-to-voxel transform (voxel-to-ras)
+		(e) image down/upsamping
+			eg. source voxel resolution = [ 1.0156 1.0156 1.0000 ]
+				the image is sampled to [ 1 1 1 ], we use 
+		    	mri_convert -downsample 0.9846 0.9846 1.0 40010119.nii.gz 40010119ISO.nii.gz
+		(f) image coordinate transform -- (?)
+			eg. 
 
 
 
