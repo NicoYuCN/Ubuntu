@@ -1,0 +1,17 @@
+# Ubuntu
+Segments in Ubuntu
+
+# install FSL
+05/20/2019
+
+key http://ftp.nmr.mgh.harvard.edu/pub/dist/freesurfer/tutorial_packages/centos6/fsl_507/doc/wiki/FslInstallation(2f)SourceCode.html
+
+(1) download source file
+        fsl-6.0.1-sources.tar.gz
+(2) unzip the file and we get "fsl" folder
+(3) pwd = /mnt/FSL/
+    export FSLDIR=/mnt/FSL/fsl
+    . ${FSLDIR}/etc/fslconf/fsl.sh
+(4) build the source file
+    cd $FSLDIR
+    ./build
