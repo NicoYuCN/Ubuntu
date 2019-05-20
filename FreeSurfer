@@ -1,5 +1,5 @@
 % FreeSurfer based format transformation of medical image data
-2019/04/22
+04/22/2019
   [1] mount the shared folder on Win10 under the VMware Player 15 and Ubuntu 18
     (a) VMware settings to STEP 12
 		https://theholmesoffice.com/how-to-share-folders-between-windows-and-ubuntu-using-vmware-player/
@@ -12,6 +12,11 @@
 	(c) The content under the folder "AAVMWshare" is visible under the folder "/mnt".
 		NOTE: It is now all work are under the Ubuntu "/mnt", not the Win10. Please remember.
 			  --------------------------------------------------------------------------------
+Comment
+05/20/2019
+[aa] At each time running VMware, it should command 
+       "sudo vmhgfs-fuse .host:/AAVMWshare /mnt/ -o allow_other -o uid=1000" 
+    to see the shared folder.   
   
   [2] install FreeSurfer under Ubuntu 18
 	(a) download FreeSurfer under Win10
@@ -49,29 +54,10 @@
 		(f) image coordinate transform -- (?)
 			eg. 
 
-
-
-  [3] install Matlab2018a under Ubuntu 18
-  	(a) prepare Matlab2018a (two iso files)
-	(b) create a folder
-		sudo mkdir /media/mathworks
-	(c) mont one ISO file
-		mount -t iso9660 -o loop ~/xxx/matlab01.iso /media/mathworks
-	(d) create a folder for matlab installation
-		sudo mkdir /usr/local/matlab2018a
-		sudo chmod 777 /usr/local/matlab2018a
-	(e) start to install matlab
-		/media/mathworks/install
-	     (1) select the folder for installation
-	     (2) agree and paste the key
-	     (3) eject x1.iso and mount the x2.iso
-	     	    sudo umount /media/mathworks
-		    sudo mount -o loop ~/xxx/matlab02.iso /media/mathworks
-	     (4) continue
-	 (f) activate the matlab
-	 (g) place the matlab on panel
-		sudo apt-get install gnome-panel (only if you don't already has installed)
-		sudo gnome-desktop-item-edit /usr/share/applications/ --create-new
-		https://www.mathworks.com/matlabcentral/answers/93739-how-do-i-launch-matlab-on-linux
-	     -- how to set as the environment varibale is difficult to me.
+Comment
+05/20/2019
+[aa] At each time running VMware, it should command 
+       "(2) export FREESURFER_HOME=/usr/local/freesurfer/"
+       "(3) source $FREESURFER_HOME/SetUpFreeSurfer.sh" 
+    to perform the freesurfer for initialization. 
     
